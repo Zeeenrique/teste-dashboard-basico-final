@@ -1,0 +1,19 @@
+<div class="container-label-tabela">
+
+  <label>Lista dos top 3 ganhadores</label>
+
+  <nz-table #basicTable [nzData]="listaTop3Ganhadores"  [nzFrontPagination]="false" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Quantidade de vitorias</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of basicTable.data">
+        <td>{{ item.name }}</td>
+        <td>{{ item.winCount }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+</div>

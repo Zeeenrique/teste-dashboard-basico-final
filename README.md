@@ -1,27 +1,32 @@
 # TesteDashboardBasico
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+Projeto desenvolvido em angular 16.2.0 e com NG-ZORRO na versao 16.0.1
 
-## Development server
+Projeto basico, contendo header, e um painel lateral com duas opções, listagem e dashboard.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Dashboard: 
+ - Apresenta 4 relarios:
+    - Lista de anos com mais ganhadores: Lista os estudios com mais vitorias
+    - Lista dos top 3 ganhadores: Lista os top 3 ganhadores
+    - Produtores com maior e menor intervalo entre vitórias: Exibe duas tabelas exibindo informação do estudio com maior e menor intervalo de vitorias
+    - Lista de anos com mais ganhadores: Tabela exibindo anos com mais ganhores, sendo possivel informar o ano.
 
-## Code scaffolding
+Listagem:
+ - Apresenta 1 relatorio:
+    - Listagem de filmes, o mesmo é excutado com paginação, possuindo filtro por ano e por vencedor. 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Projeto apresenta testes basicos unitarios
 
-## Build
+O mesmo possui uma dimensão minima 768x1280
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Instalando e atualizando informações
 
-## Running unit tests
+Após efetuar clone do projeto, abrir console e executar `npm i`, para baixar node_modules e demais dependencias.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+# Subindo ambiente
 
-## Running end-to-end tests
+Após terminar etapa acima, executar `ng s` para subir aplicação, a mesma ira suber no endereço: `http://localhost:4200/`.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+# Subir testes
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Executar `ng test` o mesmo ira abrir a tela do jasmine com as infos.

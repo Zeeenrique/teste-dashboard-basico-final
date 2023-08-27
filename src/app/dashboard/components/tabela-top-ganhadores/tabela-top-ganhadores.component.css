@@ -1,0 +1,11 @@
+:host {width: 100%;}
+
+.container-label-tabela {
+    border: 1px solid;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+}

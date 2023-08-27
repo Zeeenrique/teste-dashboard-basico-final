@@ -1,0 +1,11 @@
+:host{
+    height: 50px;
+    background-color: black !important;
+    display: flex;
+    align-items: flex-end;
+}
+
+.texto {
+    font-size: 15px;
+    padding-left: 10px;
+}

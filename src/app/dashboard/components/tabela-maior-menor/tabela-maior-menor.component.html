@@ -1,0 +1,50 @@
+<div class="container-label-tabela">
+
+  <div class="labels">
+
+    <label class="titulo">Produtores com maior e menor intervalo entre vitórias</label>
+
+    <label>Máximo</label>
+  </div>
+
+  <nz-table #basicTable [nzData]="listaMaiorTempoSemGanhar" [nzFrontPagination]="false" [nzShowPagination]="false" class="margin-tabela">
+    <thead>
+      <tr>
+        <th>Produtor</th>
+        <th>Intervalo</th>
+        <th>Ano vitoria</th>
+        <th>Ano vitoria mais recente</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of basicTable.data">
+        <td>{{ item.producer }}</td>
+        <td>{{ item.interval }}</td>
+        <td>{{ item.previousWin }}</td>
+        <td>{{ item.followingWin }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+  <label class="margin-label-minimo">Minimo</label>
+
+  <nz-table #basicTable2 [nzData]="listaMenorTempoSemGanhar" [nzFrontPagination]="false" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>Produtor</th>
+        <th>Intervalo</th>
+        <th>Ano vitoria</th>
+        <th>Ano vitoria mais recente</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of basicTable2.data">
+        <td>{{ item.producer }}</td>
+        <td>{{ item.interval }}</td>
+        <td>{{ item.previousWin }}</td>
+        <td>{{ item.followingWin }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>

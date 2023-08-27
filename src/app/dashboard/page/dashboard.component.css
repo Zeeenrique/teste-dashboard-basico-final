@@ -1,0 +1,18 @@
+:host {
+    height: 100%;
+}
+
+.container-tabelas {
+    height: 100%;
+    width: 100%;
+}
+
+.container-topo, .container-bottom {
+    display: flex;
+    width: 100%;
+    margin: 15px;
+}
+
+.margin {
+    margin-right: 15px;
+}

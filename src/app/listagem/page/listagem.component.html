@@ -1,0 +1,38 @@
+<div class="container-label-tabela margen-container">
+
+  <div class="container-titulo">
+    <label class="label-titulo">Lista de anos com mais ganhadores</label>
+  </div>
+
+  <nz-table #basicTable [nzData]="filmes" [nzPageSize]="pageSize" [nzLoading]="loading" [nzPageIndex]="pageIndex" (nzQueryParams)="onQueryParamsChange($event)" [nzTotal]="total" [nzFrontPagination]="false">
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>
+          <div class="container-label-escolha">
+            <label>Ano</label>
+            <input #input type="number" placeholder="Filtro por ano" (keyup)="filtrarPorAno()">
+          </div>
+        </th>
+        <th>Titulo</th>
+        <th>
+          <div class="container-label-escolha">
+            <label>Vencedor</label>
+            <nz-select [(ngModel)]="vencedor" (ngModelChange)="alterouGanhadores($event)" [nzShowSearch]="false">
+              <nz-option *ngFor="let option of opcoes" [nzValue]="option.value" [nzLabel]="option.label"></nz-option>
+            </nz-select>
+          </div>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of basicTable.data">
+        <td>{{ item.id }}</td>
+        <td>{{ item.year }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.winner }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>

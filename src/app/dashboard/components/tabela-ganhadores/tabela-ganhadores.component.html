@@ -1,0 +1,20 @@
+<div class="container-label-tabela">
+
+  <label>Lista de anos com mais ganhadores</label>
+
+  <nz-table #basicTable [nzData]="listaGanhadores" [nzFrontPagination]="false" [nzShowPagination]="false">
+    <thead>
+      <tr>
+        <th>Ano</th>
+        <th>Quantidade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of basicTable.data">
+        <td>{{ item.year }}</td>
+        <td>{{ item.winnerCount }}</td>
+      </tr>
+    </tbody>
+  </nz-table>
+
+</div>

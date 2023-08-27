@@ -1,0 +1,26 @@
+:host {
+    height: 100%;
+}
+
+.container-label-escolha {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.margen-container {
+    margin: 10px;
+    border: 1px solid;
+}
+
+
+.container-titulo {
+    margin: 10px;
+}
+
+.label-titulo {
+    font-size: 20px;
+    font-weight: bold;
+}

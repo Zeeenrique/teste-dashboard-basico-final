@@ -23,7 +23,7 @@ export class TabelaMaiorMenorComponent implements OnInit {
   }
 
   // Metodo responsavel por adquirir informações sobre o minimo e o maximo
-  private adquiriMaiorMenorIntervaloFilmes() {
+  private adquiriMaiorMenorIntervaloFilmes(): void {
     this.filmesService.adquiriMaiorMenorIntervaloFilmes().pipe(tap((filmes => {
       this.listaMaiorTempoSemGanhar = filmes.max;
       this.listaMenorTempoSemGanhar = filmes.min;

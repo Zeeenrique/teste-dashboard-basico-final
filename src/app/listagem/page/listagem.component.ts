@@ -35,7 +35,7 @@ export class ListagemComponent implements OnInit {
     }
 
     // Metodo de filtragem por ano, o mesmo so fara a requisação quando o tamanho do ano for maior que 3
-    filtrarPorAno() {
+    filtrarPorAno(): void {
         const valorInput = this.input.nativeElement.value
 
         if (valorInput.length > 2) {
@@ -51,7 +51,7 @@ export class ListagemComponent implements OnInit {
     }
 
     // Metodo responsavel por adquirir dados ao alterar filtro de ganhadores
-    alterouGanhadores(event: boolean) {
+    alterouGanhadores(event: boolean): void {
         this.vencedor = event;
 
         this.adquirirDados(this.input.nativeElement.value, this.vencedor)
@@ -59,7 +59,7 @@ export class ListagemComponent implements OnInit {
 
 
     // Metodo responsavel por ouvir o clique na mudança de pagina na tabela
-    onQueryParamsChange(params: NzTableQueryParams) {
+    onQueryParamsChange(params: NzTableQueryParams): void {
 
         this.loading = true;
 
@@ -75,10 +75,10 @@ export class ListagemComponent implements OnInit {
      * @param pagina parametro contendo numero da pagina
      * @param index  paramentro contendo o numero maximo de itens que sera exibido em tela por pagina
      */
-    private adquirirDados(ano: string = '', vencedor = true, pagina: number = 0, index: number = 10) {
+    private adquirirDados(ano: string = '', vencedor = true, pagina: number = 0, index: number = 10): void {
         this.filmesService.adquirirFilmesPorListagem(ano, vencedor, pagina, index).pipe(tap((lista) => {
-          
-            if(lista.content.length) {
+
+            if(lista?.content?.length) {
                 this.filmes = lista.content;
                 this.total = lista.totalElements; 
             }

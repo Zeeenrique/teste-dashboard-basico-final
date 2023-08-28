@@ -19,7 +19,7 @@ export class TabelaGanhadoresComponent implements OnInit {
   }
 
   // Metodo reponsavel por adquirir o ano com mais ganhadores
-  private adquirirAnoFilmeComMaisVencedores() {
+  private adquirirAnoFilmeComMaisVencedores(): void {
     this.filmesService.adquirirAnoFilmeComMaisVencedores().pipe(tap((filmes) => this.listaGanhadores = filmes), take(1)).subscribe()
   }
 }

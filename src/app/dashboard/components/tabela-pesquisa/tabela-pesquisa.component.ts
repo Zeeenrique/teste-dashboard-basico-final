@@ -17,7 +17,7 @@ export class TabelaPesquisaComponent {
   constructor(private filmesService: FilmesService) { }
 
   // Metodo responsavel por adquirir filmes por ano
-  adquirirAno() {
+  adquirirAno(): void {
     this.filmesService.adquiriPorAno(this.input.nativeElement.value).pipe(tap((retorno) => {
       this.listaFilmesEncontados = retorno;
     }),take(1)).subscribe()

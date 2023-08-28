@@ -6,6 +6,7 @@ import { GanhadoresDTO } from "../models/ganhadores.dto";
 import { TopGanhadoresDTO } from "../models/top-ganhores.dto";
 import { ProdutoresMaiorMenorDTO } from "../models/produtores-maior-menor.dto";
 import { FilmesDTO } from "../models/filmes.dto";
+import { InformacoesFilmeDTO } from "../models/informacoes-filme.dto";
 
 @Injectable({ providedIn: 'root' })
 export class FilmesService {
@@ -16,10 +17,9 @@ export class FilmesService {
         return this.filmesFacade.adquirirAnosComMaisVencedores().pipe(map((anos) =>
             anos.years
         ));
-
     }
 
-    adquiriTopTres(): Observable<Array<TopGanhadoresDTO>> {
+    adquirirTopTres(): Observable<Array<TopGanhadoresDTO>> {
         return this.filmesFacade.adquirirTopTres().pipe(map((studios) => studios.studios));
 
     }
@@ -29,7 +29,7 @@ export class FilmesService {
 
     }
 
-    adquiriPorAno(ano: string) {
+    adquiriPorAno(ano: string): Observable<Array<InformacoesFilmeDTO>> {
         return this.filmesFacade.adquirirProAno(ano);
 
     }

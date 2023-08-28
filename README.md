@@ -30,3 +30,9 @@ Após terminar etapa acima, executar `ng s` para subir aplicação, a mesma ira 
 # Subir testes
 
 Executar `ng test` o mesmo ira abrir a tela do jasmine com as infos.
+
+# Evoluções futuras
+- Adicionar eslint ao projeto
+- Melhorar estrutura e criar diretorio de `core` para manter os componets principais e criar o `shared` para conter components que serão reaproveitados em outros lugares
+- Criar `StringConstants` parar centralizar criação de mensagem, labels e etc.
+- Verificar adição de extensões que facilitem o desenvolvimento

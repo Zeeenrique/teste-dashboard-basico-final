@@ -9,8 +9,6 @@ import { FilmesService } from 'src/app/services/filmes.service';
   styleUrls: ['./tabela-top-ganhadores.component.css']
 })
 export class TabelaTopGanhadoresComponent implements OnInit {
-  @Input() lista: Array<any> = []
-
   listaTop3Ganhadores: Array<TopGanhadoresDTO> = []
 
   constructor(private filmesService: FilmesService) { }
@@ -20,7 +18,15 @@ export class TabelaTopGanhadoresComponent implements OnInit {
   }
 
   // Metodo responsavel por adquirir os top 3 ganhadores
-  private adquirirTopGanhadores() {
-    this.filmesService.adquiriTopTres().pipe(tap(studios => this.listaTop3Ganhadores = studios.slice(0, 3)), take(1)).subscribe();
+  private adquirirTopGanhadores(): void {
+    this.filmesService.adquirirTopTres().pipe(tap(studios => {
+      if(studios.length) {
+        this.listaTop3Ganhadores = studios.slice(0, 3);
+
+        return;
+      }
+
+      this.listaTop3Ganhadores = [];
+    }), take(1)).subscribe();
   }
 }

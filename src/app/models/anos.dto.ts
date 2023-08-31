@@ -1,9 +1,9 @@
-import { GanhadoresDTO } from "./ganhadores.dto";
+import { GanhadoresDTO } from './ganhadores.dto';
 
 export class AnosDTO {
-    years: Array<GanhadoresDTO>;
+  years: Array<GanhadoresDTO>;
 
-    constructor(years: Array<GanhadoresDTO>) {
-        this.years = years;
-    }
+  constructor(years: Array<GanhadoresDTO>) {
+    this.years = years;
+  }
 }

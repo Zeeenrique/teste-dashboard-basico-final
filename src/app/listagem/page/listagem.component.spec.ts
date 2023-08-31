@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-
 import { CommonModule } from '@angular/common';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzTableModule } from 'ng-zorro-antd/table';
@@ -23,12 +22,21 @@ describe('DashboardComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ListagemComponent],
       imports: [
-        NzTableModule, CommonModule, ListagemRoutingModule, NzSelectModule, FormsModule, BrowserAnimationsModule
+        NzTableModule,
+        CommonModule,
+        ListagemRoutingModule,
+        NzSelectModule,
+        FormsModule,
+        BrowserAnimationsModule,
       ],
-      providers: [{
-        provide: FilmesService,
-        useValue: jasmine.createSpyObj('FilmesService', ['adquirirFilmesPorListagem'])
-      }]
+      providers: [
+        {
+          provide: FilmesService,
+          useValue: jasmine.createSpyObj('FilmesService', [
+            'adquirirFilmesPorListagem',
+          ]),
+        },
+      ],
     });
 
     mockToolBarService = TestBed.get(FilmesService);
@@ -48,7 +56,6 @@ describe('DashboardComponent', () => {
   });
 
   it('Lista com dados', () => {
-
     const dadosFilme = new DadosFilmeDTO(1, 2018, 'Teste', true);
 
     const filmes = new FilmesDTO([dadosFilme], 1);
@@ -57,13 +64,12 @@ describe('DashboardComponent', () => {
 
     fixture.detectChanges();
 
-    component.ngOnInit();
+    component.alterouGanhadores('');
 
     expect(component.filmes).toEqual([dadosFilme]);
   });
 
   it('Filtrando dados por ano', () => {
-
     expect(component.filmes).toEqual([]);
 
     const dadosFilme = new DadosFilmeDTO(1, 2019, 'Teste', true);
@@ -82,7 +88,6 @@ describe('DashboardComponent', () => {
   });
 
   it('Filtrando dados por ano apagando input', () => {
-
     expect(component.filmes).toEqual([]);
 
     const dadosFilme = new DadosFilmeDTO(1, 2018, 'Teste', true);
@@ -97,11 +102,10 @@ describe('DashboardComponent', () => {
 
     component.filtrarPorAno();
 
-    expect(component.filmes).toEqual([dadosFilme])
+    expect(component.filmes).toEqual([dadosFilme]);
   });
 
   it('Filtrando dados por ganhador', () => {
-
     expect(component.filmes).toEqual([]);
 
     const dadosFilme = new DadosFilmeDTO(1, 2018, 'Teste', true);
@@ -112,13 +116,12 @@ describe('DashboardComponent', () => {
 
     fixture.detectChanges();
 
-    component.alterouGanhadores(true);
+    component.alterouGanhadores('Yes');
 
-    expect(component.filmes).toEqual([dadosFilme])
+    expect(component.filmes).toEqual([dadosFilme]);
   });
 
   it('Filtrando dados por ganhador false', () => {
-
     expect(component.filmes).toEqual([]);
 
     let dadosFilme = new DadosFilmeDTO(1, 2018, 'Teste', true);
@@ -127,21 +130,20 @@ describe('DashboardComponent', () => {
 
     mockToolBarService.adquirirFilmesPorListagem.and.returnValue(of(filmes));
 
-    component.alterouGanhadores(true);
+    component.alterouGanhadores('Yes');
 
-    expect(component.filmes).toEqual([dadosFilme])
+    expect(component.filmes).toEqual([dadosFilme]);
 
-     dadosFilme = new DadosFilmeDTO(1, 2018, 'Teste', false);
+    dadosFilme = new DadosFilmeDTO(1, 2018, 'Teste', false);
 
-     filmes = new FilmesDTO([dadosFilme], 1);
+    filmes = new FilmesDTO([dadosFilme], 1);
 
     mockToolBarService.adquirirFilmesPorListagem.and.returnValue(of(filmes));
 
     fixture.detectChanges();
 
-    component.alterouGanhadores(false);
+    component.alterouGanhadores('No');
 
-    expect(component.filmes).toEqual([dadosFilme])
+    expect(component.filmes).toEqual([dadosFilme]);
   });
-
 });

@@ -6,20 +6,25 @@ import { FilmesService } from 'src/app/services/filmes.service';
 @Component({
   selector: 'app-tabela-pesquisa',
   templateUrl: './tabela-pesquisa.component.html',
-  styleUrls: ['./tabela-pesquisa.component.css']
+  styleUrls: ['./tabela-pesquisa.component.css'],
 })
 export class TabelaPesquisaComponent {
-
   @ViewChild('inputAno') input!: ElementRef<HTMLInputElement>;
 
-  listaFilmesEncontados: Array<InformacoesFilmeDTO> = []
+  listaFilmesEncontados: Array<InformacoesFilmeDTO> = [];
 
-  constructor(private filmesService: FilmesService) { }
+  constructor(private filmesService: FilmesService) {}
 
   // Metodo responsavel por adquirir filmes por ano
   adquirirAno(): void {
-    this.filmesService.adquiriPorAno(this.input.nativeElement.value).pipe(tap((retorno) => {
-      this.listaFilmesEncontados = retorno;
-    }),take(1)).subscribe()
+    this.filmesService
+      .adquiriPorAno(this.input.nativeElement.value)
+      .pipe(
+        tap((retorno) => {
+          this.listaFilmesEncontados = retorno;
+        }),
+        take(1)
+      )
+      .subscribe();
   }
 }

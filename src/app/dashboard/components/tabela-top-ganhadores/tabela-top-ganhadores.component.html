@@ -1,12 +1,19 @@
 <div class="container-label-tabela">
+  <div class="titulo">
+    <label>Top 3 sudios with winners</label>
+  </div>
 
-  <label>Lista dos top 3 ganhadores</label>
-
-  <nz-table #basicTable [nzData]="listaTop3Ganhadores"  [nzFrontPagination]="false" [nzShowPagination]="false">
+  <nz-table
+    #basicTable
+    [nzBordered]="true"
+    [nzData]="listaTop3Ganhadores"
+    [nzFrontPagination]="false"
+    [nzShowPagination]="false"
+  >
     <thead>
       <tr>
-        <th>Nome</th>
-        <th>Quantidade de vitorias</th>
+        <th nzWidth="50%">Name</th>
+        <th nzWidth="50%">Win Count</th>
       </tr>
     </thead>
     <tbody>

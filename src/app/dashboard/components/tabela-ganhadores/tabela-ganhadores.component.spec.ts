@@ -18,16 +18,25 @@ describe('TabelaGanhadoresComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TabelaGanhadoresComponent],
       imports: [
-        DashBoardRoutingModule, NzTableModule, CommonModule, NzIconModule
+        DashBoardRoutingModule,
+        NzTableModule,
+        CommonModule,
+        NzIconModule,
       ],
-      providers: [{
-        provide: FilmesService,
-        useValue: jasmine.createSpyObj('FilmesService', ['adquirirAnoFilmeComMaisVencedores'])
-     }]
+      providers: [
+        {
+          provide: FilmesService,
+          useValue: jasmine.createSpyObj('FilmesService', [
+            'adquirirAnoFilmeComMaisVencedores',
+          ]),
+        },
+      ],
     });
 
     mockToolBarService = TestBed.get(FilmesService);
-    mockToolBarService.adquirirAnoFilmeComMaisVencedores.and.returnValue(of([]));
+    mockToolBarService.adquirirAnoFilmeComMaisVencedores.and.returnValue(
+      of([])
+    );
 
     fixture = TestBed.createComponent(TabelaGanhadoresComponent);
     component = fixture.componentInstance;
@@ -50,11 +59,13 @@ describe('TabelaGanhadoresComponent', () => {
 
     const lista = [danhadoresDTO1, danhadoresDTO2];
 
-    mockToolBarService.adquirirAnoFilmeComMaisVencedores.and.returnValue(of(lista));
+    mockToolBarService.adquirirAnoFilmeComMaisVencedores.and.returnValue(
+      of(lista)
+    );
 
     component.ngOnInit();
 
-    fixture.detectChanges()
+    fixture.detectChanges();
 
     expect(component.listaGanhadores).toEqual(lista);
   });

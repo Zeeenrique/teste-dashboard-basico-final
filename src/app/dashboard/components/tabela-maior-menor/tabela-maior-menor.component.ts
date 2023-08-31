@@ -7,16 +7,16 @@ import { FilmesService } from 'src/app/services/filmes.service';
 @Component({
   selector: 'app-tabela-maior-menor',
   templateUrl: './tabela-maior-menor.component.html',
-  styleUrls: ['./tabela-maior-menor.component.css']
+  styleUrls: ['./tabela-maior-menor.component.css'],
 })
 export class TabelaMaiorMenorComponent implements OnInit {
-  @Input() lista: Array<any> = []
+  @Input() lista: Array<any> = [];
 
-  listaMaiorTempoSemGanhar: Array<MaiorMenorDTO> = []
+  listaMaiorTempoSemGanhar: Array<MaiorMenorDTO> = [];
 
-  listaMenorTempoSemGanhar: Array<MaiorMenorDTO> = []
+  listaMenorTempoSemGanhar: Array<MaiorMenorDTO> = [];
 
-  constructor(private filmesService: FilmesService){}
+  constructor(private filmesService: FilmesService) {}
 
   ngOnInit(): void {
     this.adquiriMaiorMenorIntervaloFilmes();
@@ -24,9 +24,15 @@ export class TabelaMaiorMenorComponent implements OnInit {
 
   // Metodo responsavel por adquirir informações sobre o minimo e o maximo
   private adquiriMaiorMenorIntervaloFilmes(): void {
-    this.filmesService.adquiriMaiorMenorIntervaloFilmes().pipe(tap((filmes => {
-      this.listaMaiorTempoSemGanhar = filmes.max;
-      this.listaMenorTempoSemGanhar = filmes.min;
-    })),take(1)).subscribe();
+    this.filmesService
+      .adquiriMaiorMenorIntervaloFilmes()
+      .pipe(
+        tap((filmes) => {
+          this.listaMaiorTempoSemGanhar = filmes.max;
+          this.listaMenorTempoSemGanhar = filmes.min;
+        }),
+        take(1)
+      )
+      .subscribe();
   }
 }

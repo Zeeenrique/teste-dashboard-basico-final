@@ -18,9 +18,7 @@ import { NzTableModule } from 'ng-zorro-antd/table';
 registerLocaleData(pt);
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -32,11 +30,9 @@ registerLocaleData(pt);
     RouterModule,
     HeaderModule,
     NzGridModule,
-    NzTableModule
+    NzTableModule,
   ],
-  providers: [
-    { provide: NZ_I18N, useValue: pt_BR }
-  ],
-  bootstrap: [AppComponent]
+  providers: [{ provide: NZ_I18N, useValue: pt_BR }],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

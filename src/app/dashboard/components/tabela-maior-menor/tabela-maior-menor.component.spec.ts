@@ -19,16 +19,25 @@ describe('TabelaMaiorMenorComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TabelaMaiorMenorComponent],
       imports: [
-        DashBoardRoutingModule, NzTableModule, CommonModule, NzIconModule
+        DashBoardRoutingModule,
+        NzTableModule,
+        CommonModule,
+        NzIconModule,
       ],
-      providers: [{
-        provide: FilmesService,
-        useValue: jasmine.createSpyObj('FilmesService', ['adquiriMaiorMenorIntervaloFilmes'])
-      }]
+      providers: [
+        {
+          provide: FilmesService,
+          useValue: jasmine.createSpyObj('FilmesService', [
+            'adquiriMaiorMenorIntervaloFilmes',
+          ]),
+        },
+      ],
     });
 
     mockToolBarService = TestBed.get(FilmesService);
-    mockToolBarService.adquiriMaiorMenorIntervaloFilmes.and.returnValue(of(new ProdutoresMaiorMenorDTO([], [])))
+    mockToolBarService.adquiriMaiorMenorIntervaloFilmes.and.returnValue(
+      of(new ProdutoresMaiorMenorDTO([], []))
+    );
 
     fixture = TestBed.createComponent(TabelaMaiorMenorComponent);
     component = fixture.componentInstance;
@@ -48,15 +57,24 @@ describe('TabelaMaiorMenorComponent', () => {
     expect(component.listaMaiorTempoSemGanhar).toEqual([]);
     expect(component.listaMenorTempoSemGanhar).toEqual([]);
 
-    const produtoresMaiorMenorDTO = new ProdutoresMaiorMenorDTO([new MaiorMenorDTO('Teste 1', 1, 2018, 2019)],[ new MaiorMenorDTO('Teste 2', 2, 2018, 2020)]);
+    const produtoresMaiorMenorDTO = new ProdutoresMaiorMenorDTO(
+      [new MaiorMenorDTO('Teste 1', 1, 2018, 2019)],
+      [new MaiorMenorDTO('Teste 2', 2, 2018, 2020)]
+    );
 
-    mockToolBarService.adquiriMaiorMenorIntervaloFilmes.and.returnValue(of(produtoresMaiorMenorDTO));
+    mockToolBarService.adquiriMaiorMenorIntervaloFilmes.and.returnValue(
+      of(produtoresMaiorMenorDTO)
+    );
 
     component.ngOnInit();
 
-    fixture.detectChanges()
+    fixture.detectChanges();
 
-    expect(component.listaMaiorTempoSemGanhar).toEqual(produtoresMaiorMenorDTO.max);
-    expect(component.listaMenorTempoSemGanhar).toEqual(produtoresMaiorMenorDTO.min);
+    expect(component.listaMaiorTempoSemGanhar).toEqual(
+      produtoresMaiorMenorDTO.max
+    );
+    expect(component.listaMenorTempoSemGanhar).toEqual(
+      produtoresMaiorMenorDTO.min
+    );
   });
 });

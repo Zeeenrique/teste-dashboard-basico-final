@@ -8,7 +8,6 @@ import { DashBoardRoutingModule } from '../../dashboard-routing.module';
 import { of } from 'rxjs';
 import { TopGanhadoresDTO } from 'src/app/models/top-ganhores.dto';
 
-
 describe('TabelaTopGanhadoresComponent', () => {
   let component: TabelaTopGanhadoresComponent;
   let fixture: ComponentFixture<TabelaTopGanhadoresComponent>;
@@ -18,16 +17,21 @@ describe('TabelaTopGanhadoresComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TabelaTopGanhadoresComponent],
       imports: [
-        DashBoardRoutingModule, NzTableModule, CommonModule, NzIconModule
+        DashBoardRoutingModule,
+        NzTableModule,
+        CommonModule,
+        NzIconModule,
       ],
-      providers: [{
-        provide: FilmesService,
-        useValue: jasmine.createSpyObj('FilmesService',['adquirirTopTres'])
-      }]
+      providers: [
+        {
+          provide: FilmesService,
+          useValue: jasmine.createSpyObj('FilmesService', ['adquirirTopTres']),
+        },
+      ],
     });
 
     mockToolBarService = TestBed.get(FilmesService);
-    mockToolBarService.adquirirTopTres.and.returnValue(of([]))
+    mockToolBarService.adquirirTopTres.and.returnValue(of([]));
 
     fixture = TestBed.createComponent(TabelaTopGanhadoresComponent);
     component = fixture.componentInstance;

@@ -6,13 +6,12 @@ import { FilmesService } from 'src/app/services/filmes.service';
 @Component({
   selector: 'app-tabela-ganhadores',
   templateUrl: './tabela-ganhadores.component.html',
-  styleUrls: ['./tabela-ganhadores.component.css']
+  styleUrls: ['./tabela-ganhadores.component.css'],
 })
 export class TabelaGanhadoresComponent implements OnInit {
-
   listaGanhadores: Array<GanhadoresDTO> = [];
 
-  constructor(private filmesService: FilmesService) { }
+  constructor(private filmesService: FilmesService) {}
 
   ngOnInit(): void {
     this.adquirirAnoFilmeComMaisVencedores();
@@ -20,6 +19,12 @@ export class TabelaGanhadoresComponent implements OnInit {
 
   // Metodo reponsavel por adquirir o ano com mais ganhadores
   private adquirirAnoFilmeComMaisVencedores(): void {
-    this.filmesService.adquirirAnoFilmeComMaisVencedores().pipe(tap((filmes) => this.listaGanhadores = filmes), take(1)).subscribe()
+    this.filmesService
+      .adquirirAnoFilmeComMaisVencedores()
+      .pipe(
+        tap((filmes) => (this.listaGanhadores = filmes)),
+        take(1)
+      )
+      .subscribe();
   }
 }

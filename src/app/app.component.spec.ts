@@ -13,20 +13,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { HeaderModule } from './header/header.module';
 
 describe('AppComponent', () => {
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [RouterTestingModule,  BrowserModule,
-      FormsModule,
-      ReactiveFormsModule,
-      AppRoutingModule,
-      HttpClientModule,
-      BrowserAnimationsModule,
-      CommonModule,
-      RouterModule,
-      HeaderModule,
-      NzGridModule,
-      NzTableModule],
-    declarations: [AppComponent]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        CommonModule,
+        RouterModule,
+        HeaderModule,
+        NzGridModule,
+        NzTableModule,
+      ],
+      declarations: [AppComponent],
+    })
+  );
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);

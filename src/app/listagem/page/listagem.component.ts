@@ -5,85 +5,97 @@ import { DadosFilmeDTO } from 'src/app/models/dados-filme.dto';
 import { FilmesService } from 'src/app/services/filmes.service';
 
 @Component({
-    templateUrl: './listagem.component.html',
-    styleUrls: ['./listagem.component.css']
+  templateUrl: './listagem.component.html',
+  styleUrls: ['./listagem.component.css'],
 })
-export class ListagemComponent implements OnInit {
-    @ViewChild('input') input!: ElementRef<HTMLInputElement>;
+export class ListagemComponent {
+  @ViewChild('input') input!: ElementRef<HTMLInputElement>;
 
-    filmes: Array<DadosFilmeDTO> = [];
+  filmes: Array<DadosFilmeDTO> = [];
 
-    vencedor = false;
+  winner = 'Yes/No';
 
-    loading = true;
+  loading = true;
 
-    pageSize = 10;
-    
-    total = 1;
+  pageSize = 15;
 
-    pageIndex = 1;
+  total = 1;
 
-    opcoes = [
-        { label: 'Sim', value: 'true' },
-        { label: 'Nao', value: 'false' }
-    ];
+  pageIndex = 0;
 
-    constructor(private filmesService: FilmesService) { }
+  opcoes = ['Yes', 'No', 'Yes/No'];
 
-    ngOnInit(): void {
-        this.adquirirDados();
+  constructor(private filmesService: FilmesService) {}
+
+  // Metodo de filtragem por ano, o mesmo so fara a requisação quando o tamanho do ano for maior que 3
+  filtrarPorAno(): void {
+    const valorInput = this.input.nativeElement.value;
+
+    if (valorInput.length > 2) {
+      this.adquirirDados(valorInput, this.winner);
+
+      return;
     }
 
-    // Metodo de filtragem por ano, o mesmo so fara a requisação quando o tamanho do ano for maior que 3
-    filtrarPorAno(): void {
-        const valorInput = this.input.nativeElement.value
+    if (valorInput === '') {
+      this.adquirirDados();
+    }
+  }
 
-        if (valorInput.length > 2) {
+  // Metodo responsavel por adquirir dados ao alterar filtro de ganhadores
+  alterouGanhadores(event: string): void {
+    this.winner = event;
 
-            this.adquirirDados(valorInput);
+    this.adquirirDados(this.input.nativeElement.value, this.winner);
+  }
 
-            return;
-        }
+  // Metodo responsavel por ouvir o clique na mudança de pagina na tabela
+  onQueryParamsChange(params: NzTableQueryParams): void {
+    this.loading = true;
 
-        if (valorInput === '') {
-            this.adquirirDados();
-        }
+    let { pageSize, pageIndex } = params;
+
+    if(pageIndex > 0) {
+      pageIndex = pageIndex - 1;
     }
 
-    // Metodo responsavel por adquirir dados ao alterar filtro de ganhadores
-    alterouGanhadores(event: boolean): void {
-        this.vencedor = event;
+    this.adquirirDados(
+      this.input.nativeElement.value,
+      this.winner,
+      pageIndex,
+      pageSize
+    );
+  }
 
-        this.adquirirDados(this.input.nativeElement.value, this.vencedor)
-    }
+  tratarDado(winner: boolean) {
+    return winner ? 'Yes' : 'No';
+  }
 
+  /**
+   * Metodo resposavel por adquirir filmes utilizando listagem, sendo passado por parametro
+   * @param ano parametro opcional
+   * @param vencedor parametro opcional com default true
+   * @param pagina parametro contendo numero da pagina
+   * @param index  paramentro contendo o numero maximo de itens que sera exibido em tela por pagina
+   */
+  private adquirirDados(
+    ano: string = '',
+    vencedor: string = 'Yes/No',
+    pagina: number = 0,
+    index: number = 15
+  ): void {
+    this.filmesService
+      .adquirirFilmesPorListagem(ano, vencedor, pagina, index)
+      .pipe(
+        tap((lista) => {
+          if (lista?.content?.length) {
+            this.filmes = lista.content;
+            this.total = lista.totalElements;
+          }
 
-    // Metodo responsavel por ouvir o clique na mudança de pagina na tabela
-    onQueryParamsChange(params: NzTableQueryParams): void {
-
-        this.loading = true;
-
-        const { pageSize, pageIndex } = params;
-
-        this.adquirirDados(this.input.nativeElement.value, this.vencedor, pageIndex, pageSize)
-    }
-
-    /**
-     * Metodo resposavel por adquirir filmes utilizando listagem, sendo passado por parametro
-     * @param ano parametro opcional
-     * @param vencedor parametro opcional com default true
-     * @param pagina parametro contendo numero da pagina
-     * @param index  paramentro contendo o numero maximo de itens que sera exibido em tela por pagina
-     */
-    private adquirirDados(ano: string = '', vencedor = true, pagina: number = 0, index: number = 10): void {
-        this.filmesService.adquirirFilmesPorListagem(ano, vencedor, pagina, index).pipe(tap((lista) => {
-
-            if(lista?.content?.length) {
-                this.filmes = lista.content;
-                this.total = lista.totalElements; 
-            }
-
-            this.loading = false;
-        })).subscribe();
-    }
+          this.loading = false;
+        })
+      )
+      .subscribe();
+  }
 }

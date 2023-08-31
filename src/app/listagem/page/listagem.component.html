@@ -1,26 +1,49 @@
 <div class="container-label-tabela margen-container">
-
   <div class="container-titulo">
-    <label class="label-titulo">Lista de anos com mais ganhadores</label>
+    <label class="label-titulo">List movies</label>
   </div>
 
-  <nz-table #basicTable [nzData]="filmes" [nzPageSize]="pageSize" [nzLoading]="loading" [nzPageIndex]="pageIndex" (nzQueryParams)="onQueryParamsChange($event)" [nzTotal]="total" [nzFrontPagination]="false">
+  <nz-table
+    #basicTable
+    [nzBordered]="true"
+    [nzData]="filmes"
+    [nzPageSize]="pageSize"
+    [nzLoading]="loading"
+    [nzPageIndex]="pageIndex"
+    (nzQueryParams)="onQueryParamsChange($event)"
+    [nzTotal]="total"
+    [nzFrontPagination]="false"
+  >
     <thead>
       <tr>
-        <th>Id</th>
-        <th>
+        <th nzAlign="center" nzWidth="25%">ID</th>
+        <th nzWidth="25%">
           <div class="container-label-escolha">
-            <label>Ano</label>
-            <input #input type="number" placeholder="Filtro por ano" (keyup)="filtrarPorAno()">
+            <label>Year</label>
+            <input
+              #input
+              class="tamanho-input"
+              type="number"
+              placeholder="Filter by year"
+              (keyup)="filtrarPorAno()"
+            />
           </div>
         </th>
-        <th>Titulo</th>
-        <th>
+        <th nzAlign="center" nzWidth="25%">Title</th>
+        <th nzWidth="25%">
           <div class="container-label-escolha">
-            <label>Vencedor</label>
-            <nz-select [(ngModel)]="vencedor" (ngModelChange)="alterouGanhadores($event)" [nzShowSearch]="false">
-              <nz-option *ngFor="let option of opcoes" [nzValue]="option.value" [nzLabel]="option.label"></nz-option>
-            </nz-select>
+            <label>Winner?</label>
+            <nz-select
+              nzPlaceHolder="Yes/No"
+              ngModel="Yes/No"
+              (ngModelChange)="alterouGanhadores($event)"
+            >
+              <nz-option
+                *ngFor="let opcao of opcoes"
+                [nzValue]="opcao"
+                [nzLabel]="opcao"
+              ></nz-option
+            ></nz-select>
           </div>
         </th>
       </tr>
@@ -30,9 +53,8 @@
         <td>{{ item.id }}</td>
         <td>{{ item.year }}</td>
         <td>{{ item.title }}</td>
-        <td>{{ item.winner }}</td>
+        <td>{{ tratarDado(item.winner) }}</td>
       </tr>
     </tbody>
   </nz-table>
-
 </div>

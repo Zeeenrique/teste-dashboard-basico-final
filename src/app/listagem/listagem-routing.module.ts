@@ -1,17 +1,17 @@
-import { NgModule } from "@angular/core";
-import { RouterModule, Routes } from "@angular/router";
-import { ListagemComponent } from "./page/listagem.component";
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { ListagemComponent } from './page/listagem.component';
 
 const routes: Routes = [
-    {
-        path: '',
-        pathMatch: 'prefix',
-        component: ListagemComponent
-    }
+  {
+    path: '',
+    pathMatch: 'prefix',
+    component: ListagemComponent,
+  },
 ];
 
 @NgModule({
-    imports: [RouterModule.forChild(routes)],
-    exports: [RouterModule]
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule],
 })
-export class ListagemRoutingModule { }
+export class ListagemRoutingModule {}

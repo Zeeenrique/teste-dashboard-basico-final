@@ -1,35 +1,37 @@
 :host {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-    height: 100%;
+  height: 100%;
 }
 
 .container-body {
-    flex-wrap: nowrap;
-    flex: 1;
-    overflow: auto;
+  flex-wrap: nowrap;
+  flex: 1;
+  overflow: auto;
 }
 
 .container-painel-lateral {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background: #f8f9fa;
-
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #f8f9fa;
 }
 
-
 label {
-    margin: 10px;
+  margin: 10px;
 }
 
 .meio {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
-.margem-infos {
-    margin: 10px;
-    cursor: pointer;
+.container-opcoes {
+  padding: 15px 10px;
+  cursor: pointer;
+}
+
+.fonte-azul {
+  color: #1f7cdd;
 }

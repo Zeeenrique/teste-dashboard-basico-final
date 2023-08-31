@@ -1,19 +1,26 @@
 <div class="container-label-tabela">
-
   <div class="labels">
-
-    <label class="titulo">Produtores com maior e menor intervalo entre vitórias</label>
-
-    <label>Máximo</label>
+    <label class="titulo"
+      >Producers with longest and shortest interval between wins</label
+    >
   </div>
 
-  <nz-table #basicTable [nzData]="listaMaiorTempoSemGanhar" [nzFrontPagination]="false" [nzShowPagination]="false" class="margin-tabela">
+  <label class="titulo-grid">Maximum</label>
+
+  <nz-table
+    #basicTable
+    [nzBordered]="true"
+    [nzData]="listaMaiorTempoSemGanhar"
+    [nzFrontPagination]="false"
+    [nzShowPagination]="false"
+    class="margin-tabela"
+  >
     <thead>
       <tr>
-        <th>Produtor</th>
-        <th>Intervalo</th>
-        <th>Ano vitoria</th>
-        <th>Ano vitoria mais recente</th>
+        <th nzWidth="25%">Producer</th>
+        <th nzWidth="25%">Interval</th>
+        <th nzWidth="25%">Previous Year</th>
+        <th nzWidth="25%">Following Year</th>
       </tr>
     </thead>
     <tbody>
@@ -26,15 +33,21 @@
     </tbody>
   </nz-table>
 
-  <label class="margin-label-minimo">Minimo</label>
+  <label class="titulo-grid">Minimum</label>
 
-  <nz-table #basicTable2 [nzData]="listaMenorTempoSemGanhar" [nzFrontPagination]="false" [nzShowPagination]="false">
+  <nz-table
+    #basicTable2
+    [nzBordered]="true"
+    [nzData]="listaMenorTempoSemGanhar"
+    [nzFrontPagination]="false"
+    [nzShowPagination]="false"
+  >
     <thead>
       <tr>
-        <th>Produtor</th>
-        <th>Intervalo</th>
-        <th>Ano vitoria</th>
-        <th>Ano vitoria mais recente</th>
+        <th nzWidth="25%">Producer</th>
+        <th nzWidth="25%">Interval</th>
+        <th nzWidth="25%">Previous Year</th>
+        <th nzWidth="25%">Following Year</th>
       </tr>
     </thead>
     <tbody>
@@ -46,5 +59,4 @@
       </tr>
     </tbody>
   </nz-table>
-
 </div>

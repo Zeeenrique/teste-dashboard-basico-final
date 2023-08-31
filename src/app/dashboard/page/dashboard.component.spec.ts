@@ -15,23 +15,41 @@ import { of } from 'rxjs';
 describe('DashboardComponent', () => {
   let component: DashboardComponent;
   let fixture: ComponentFixture<DashboardComponent>;
-  let mockToolBarService
+  let mockToolBarService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [DashboardComponent, TabelaTopGanhadoresComponent, TabelaPesquisaComponent, TabelaMaiorMenorComponent, TabelaGanhadoresComponent],
-      imports: [
-        DashBoardRoutingModule, NzTableModule, CommonModule, NzIconModule
+      declarations: [
+        DashboardComponent,
+        TabelaTopGanhadoresComponent,
+        TabelaPesquisaComponent,
+        TabelaMaiorMenorComponent,
+        TabelaGanhadoresComponent,
       ],
-      providers: [{
-        provide: FilmesService,
-        useValue: jasmine.createSpyObj('FilmesService', ['adquirirTopTres', 'adquirirAnoFilmeComMaisVencedores', 'adquiriMaiorMenorIntervaloFilmes', 'adquiriPorAno'])
-      }]
+      imports: [
+        DashBoardRoutingModule,
+        NzTableModule,
+        CommonModule,
+        NzIconModule,
+      ],
+      providers: [
+        {
+          provide: FilmesService,
+          useValue: jasmine.createSpyObj('FilmesService', [
+            'adquirirTopTres',
+            'adquirirAnoFilmeComMaisVencedores',
+            'adquiriMaiorMenorIntervaloFilmes',
+            'adquiriPorAno',
+          ]),
+        },
+      ],
     });
 
     mockToolBarService = TestBed.get(FilmesService);
     mockToolBarService.adquirirTopTres.and.returnValue(of([]));
-    mockToolBarService.adquirirAnoFilmeComMaisVencedores.and.returnValue(of([]));
+    mockToolBarService.adquirirAnoFilmeComMaisVencedores.and.returnValue(
+      of([])
+    );
     mockToolBarService.adquiriMaiorMenorIntervaloFilmes.and.returnValue(of([]));
     mockToolBarService.adquiriPorAno.and.returnValue(of([]));
 

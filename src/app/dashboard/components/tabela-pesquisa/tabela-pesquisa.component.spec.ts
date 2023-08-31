@@ -8,7 +8,6 @@ import { DashBoardRoutingModule } from '../../dashboard-routing.module';
 import { of } from 'rxjs';
 import { InformacoesFilmeDTO } from 'src/app/models/informacoes-filme.dto';
 
-
 describe('TabelaPesquisaComponent', () => {
   let component: TabelaPesquisaComponent;
   let fixture: ComponentFixture<TabelaPesquisaComponent>;
@@ -18,16 +17,21 @@ describe('TabelaPesquisaComponent', () => {
     TestBed.configureTestingModule({
       declarations: [TabelaPesquisaComponent],
       imports: [
-        DashBoardRoutingModule, NzTableModule, CommonModule, NzIconModule
+        DashBoardRoutingModule,
+        NzTableModule,
+        CommonModule,
+        NzIconModule,
       ],
-      providers: [{
-        provide: FilmesService,
-        useValue: jasmine.createSpyObj('FilmesService', ['adquiriPorAno'])
-     }]
+      providers: [
+        {
+          provide: FilmesService,
+          useValue: jasmine.createSpyObj('FilmesService', ['adquiriPorAno']),
+        },
+      ],
     });
 
     mockToolBarService = TestBed.get(FilmesService);
-    mockToolBarService.adquiriPorAno.and.returnValue(of([]))
+    mockToolBarService.adquiriPorAno.and.returnValue(of([]));
 
     fixture = TestBed.createComponent(TabelaPesquisaComponent);
     component = fixture.componentInstance;
@@ -46,7 +50,11 @@ describe('TabelaPesquisaComponent', () => {
     expect(component.listaFilmesEncontados).toEqual([]);
 
     const informacoesFilmeDTO = new InformacoesFilmeDTO(1, 2018, 'Filme 2018');
-    const informacoesFilmeDTO2 = new InformacoesFilmeDTO(1, 2018, 'Filme 2018 2');
+    const informacoesFilmeDTO2 = new InformacoesFilmeDTO(
+      1,
+      2018,
+      'Filme 2018 2'
+    );
 
     const lista = [informacoesFilmeDTO, informacoesFilmeDTO2];
 
@@ -56,7 +64,7 @@ describe('TabelaPesquisaComponent', () => {
 
     component.adquirirAno();
 
-    fixture.detectChanges()
+    fixture.detectChanges();
 
     expect(component.listaFilmesEncontados).toEqual(lista);
   });

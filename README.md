@@ -5,7 +5,7 @@ Projeto desenvolvido em angular 16.2.0 e com NG-ZORRO na versao 16.0.1
 Projeto basico, contendo header, e um painel lateral com duas opções, listagem e dashboard.
 
 Dashboard: 
- - Apresenta 4 relarios:
+ - Apresenta 4 relatorios:
     - Lista de anos com mais ganhadores: Lista os estudios com mais vitorias
     - Lista dos top 3 ganhadores: Lista os top 3 ganhadores
     - Produtores com maior e menor intervalo entre vitórias: Exibe duas tabelas exibindo informação do estudio com maior e menor intervalo de vitorias
@@ -25,11 +25,14 @@ Após efetuar clone do projeto, abrir console e executar `npm i`, para baixar no
 
 # Subindo ambiente
 
-Após terminar etapa acima, executar `ng s` para subir aplicação, a mesma ira suber no endereço: `http://localhost:4200/`.
+Após terminar etapa acima, executar `ng s` para subir aplicação, a mesma ira subir no endereço: `http://localhost:4200/`.
 
 # Subir testes
 
 Executar `ng test` o mesmo ira abrir a tela do jasmine com as infos.
+
+# Extenções a serem utilizadas para manter identação
+- Prettier - Code formatter
 
 # Evoluções futuras
 - Adicionar eslint ao projeto

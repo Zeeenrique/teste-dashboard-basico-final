@@ -1,13 +1,25 @@
-<app-header style="background-color: #001529; color: white;">
+<app-header style="background-color: #001529; color: white">
   <div class="logo">Sua Aplicação</div>
 </app-header>
 
 <div nz-row class="container-body">
-    <div class="container-painel-lateral"  nzFlex="auto" nz-col>
-      <div class="margem-infos" (click)="navegar('dashboard')">Dashboard</div>
-      <div class="margem-infos" (click)="navegar('listagem')">Listagem</div>
+  <div class="container-painel-lateral" nzFlex="auto" nz-col>
+    <div class="container-opcoes">
+      <div
+        (click)="navegar('dashboard')"
+        [ngClass]="{ 'fonte-azul': dashBoardFocado }"
+      >
+        Dashboard
+      </div>
+      <div
+        (click)="navegar('list')"
+        [ngClass]="{ 'fonte-azul': listFocado }"
+      >
+        List
+      </div>
     </div>
-    <div nzFlex="9" nz-col class="meio">
-      <router-outlet></router-outlet>
-    </div>
+  </div>
+  <div nzFlex="9" nz-col class="meio">
+    <router-outlet></router-outlet>
+  </div>
 </div>

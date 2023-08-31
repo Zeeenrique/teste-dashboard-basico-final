@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { take } from 'rxjs';
-import { DadosFilmeDTO } from 'src/app/models/dados-filme.dto';
-import { FilmesService } from 'src/app/services/filmes.service';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.css'],
 })
-export class DashboardComponent{ 
-}
+export class DashboardComponent {}

@@ -3,19 +3,17 @@
 }
 
 .container-label-tabela {
-  border: 1px #eaeaea solid; 
+  border: 1px #eaeaea solid;
   box-shadow: 0px 2px 0px rgb(0 0 0 / 12%);
 }
 
-
 .titulo {
-  margin: 15px 12px; 
+  margin: 15px 12px;
 }
 
 label {
   font-size: 20px;
   font-weight: bold;
-
 }
 
 nz-table {

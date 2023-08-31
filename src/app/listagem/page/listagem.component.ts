@@ -55,7 +55,7 @@ export class ListagemComponent {
 
     let { pageSize, pageIndex } = params;
 
-    if(pageIndex > 0) {
+    if (pageIndex > 0) {
       pageIndex = pageIndex - 1;
     }
 

@@ -17,6 +17,13 @@ export class TabelaPesquisaComponent {
 
   // Metodo responsavel por adquirir filmes por ano
   adquirirAno(): void {
+
+    if(!this.input.nativeElement.value) {
+      this.listaFilmesEncontados = [];
+
+      return;
+    }
+
     this.filmesService
       .adquiriPorAno(this.input.nativeElement.value)
       .pipe(

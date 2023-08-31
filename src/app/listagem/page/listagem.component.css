@@ -11,8 +11,10 @@
 }
 
 .margen-container {
-  margin: 10px 15px;
+  margin-inline: 15px;
+  margin-top: 10px;
   border: 1px #eaeaea solid;
+  width: 100%;
 }
 
 .container-titulo {
@@ -40,6 +42,12 @@
   &:focus-visible {
     outline: 2px solid black !important;
   }
+}
+
+.container-principal {
+  display: flex;
+  width: 100%;
+  height: 100%;
 }
 
 nz-select {
